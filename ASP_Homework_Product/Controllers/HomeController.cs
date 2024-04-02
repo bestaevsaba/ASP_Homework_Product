@@ -21,7 +21,7 @@ namespace ASP_Homework_Product.Controllers
         public string Index()
         {
             var products = productRepository.GetProducts();
-            var result = "";
+            var result = " ";
             foreach (var product in products) { result += product + "\n\n"; }
             return result;
         }

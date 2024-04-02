@@ -15,6 +15,11 @@ namespace ASP_Homework_Product
             new Product("GIGABYTE GeForce RTX 4070 Ti WINDFORCE OC", 86000, "ad"),
         };
 
-         public List<Product> GetProducts() { return products; }      
+         public List<Product> GetProducts() { return products; }
+
+        public Product TryGetById(int id)
+        {
+            return products.FirstOrDefault(product => product.Id == id);
+        }
     }
 }
