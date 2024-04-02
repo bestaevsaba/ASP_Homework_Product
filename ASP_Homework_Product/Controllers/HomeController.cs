@@ -12,19 +12,18 @@ namespace ASP_Homework_Product.Controllers
     public class HomeController : Controller
     {
         
-        private readonly ILogger<HomeController> _logger;
-        ProductRepository productRepository = new ProductRepository();
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ProductRepository productRepository;
+        public HomeController()
         {
-            _logger = logger;
+            productRepository = new ProductRepository();
         }
 
-        public IActionResult Index()
+        public string Index()
         {
-            List<Product> products = productRepository.GetProducts();
-
-
-            return View(products);
+            var products = productRepository.GetProducts();
+            var result = "";
+            foreach (var product in products) { result += product + "\n\n"; }
+            return result;
         }
 
        
