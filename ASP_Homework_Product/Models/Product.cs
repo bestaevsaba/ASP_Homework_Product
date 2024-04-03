@@ -12,13 +12,14 @@ namespace ASP_Homework_Product.Models
         public string Name { get; }
         public decimal Cost { get; }
         public string Description { get; }
-
-        public Product(string name, decimal cost, string description)
+        public string ImagePath { get; }
+        public Product(string name, decimal cost, string description, string imagePath)
         {
             Description = description;
             Name = name;
             Cost = cost;
             Id = instanceCounter++;
+            ImagePath = imagePath;
         }
 
         public override string ToString()

@@ -18,14 +18,10 @@ namespace ASP_Homework_Product.Controllers
             productRepository = new ProductRepository();
         }
 
-        public string Index()
+        public IActionResult Index()
         {
             var products = productRepository.GetProducts();
-            var result = " ";
-            foreach (var product in products) { result += product + "\n\n"; }
-            return result;
+            return View(products);
         }
-
-       
     }
 }
