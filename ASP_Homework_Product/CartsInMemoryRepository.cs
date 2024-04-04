@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace ASP_Homework_Product
 {
-    public class CartsRepository
+    public class CartsInMemoryRepository : ICartsRepository
     {
         private List<Cart> carts = new List<Cart>();
 
-        internal Cart TryGetByUserId(string userId)
+        public Cart TryGetByUserId(string userId)
         {
             return carts.FirstOrDefault(x => x.UserId == userId);
         }

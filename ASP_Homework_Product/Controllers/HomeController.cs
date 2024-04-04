@@ -12,8 +12,8 @@ namespace ASP_Homework_Product.Controllers
     public class HomeController : Controller
     {
         
-        private readonly ProductsRepository productRepository;
-        public HomeController(ProductsRepository productRepository)
+        private readonly IProductsRepository productRepository;
+        public HomeController(IProductsRepository productRepository)
         {
             this.productRepository = productRepository;
         }
