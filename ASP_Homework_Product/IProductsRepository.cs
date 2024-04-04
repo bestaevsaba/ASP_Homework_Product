@@ -5,7 +5,9 @@ namespace ASP_Homework_Product
 {
     public interface IProductsRepository
     {
+        void Add(Product product);
         List<Product> GetProducts();
         Product TryGetById(int id);
+        void Update(Product product);
     }
 }

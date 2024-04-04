@@ -1,4 +1,5 @@
 ﻿using ASP_Homework_Product.Models;
+using Microsoft.AspNetCore.DataProtection.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,11 +14,27 @@ namespace ASP_Homework_Product
             new Product("GIGABYTE GeForce RTX 4070 Ti WINDFORCE OC", 86000, "ad", "/images/GIGABYTE GeForce RTX 4070 Ti WINDFORCE OC.jpg"),
         };
 
+        public void Add(Product product)
+        {
+            product.ImagePath = "/images/GIGABYTE GeForce RTX 4070 Ti WINDFORCE OC.jpg";
+            products.Add(product);
+        }
+
         public List<Product> GetProducts() { return products; }
 
         public Product TryGetById(int id)
         {
             return products.FirstOrDefault(product => product.Id == id);
+        }
+
+        public void Update(Product product)
+        {
+            var existingProduct= products.FirstOrDefault(x=> x.Id == product.Id);
+            if(existingProduct == null) return;
+
+            existingProduct.Name = product.Name;
+            existingProduct.Description = product.Description;
+            existingProduct.Cost = product.Cost;
         }
     }
 }
