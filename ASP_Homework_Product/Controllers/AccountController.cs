@@ -13,7 +13,8 @@ namespace ASP_Homework_Product.Controllers
         [HttpPost]
         public IActionResult Login(Login login) 
         {
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid) return RedirectToAction("Index", "Home"); else return RedirectToAction("Login");
+
         }
         public IActionResult Register()
         {
@@ -23,7 +24,7 @@ namespace ASP_Homework_Product.Controllers
         [HttpPost]
         public IActionResult Register(Register register)
         {
-            return RedirectToAction("Index", "Home");
+            if (ModelState.IsValid) return RedirectToAction("Index", "Home"); else return RedirectToAction("Register");
         }
     }
 }
