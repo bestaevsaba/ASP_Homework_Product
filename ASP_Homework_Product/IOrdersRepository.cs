@@ -4,6 +4,6 @@ namespace ASP_Homework_Product
 {
     public interface IOrdersRepository
     {
-        void Add(Cart cart);
+        void Add(Order order);
     }
 }

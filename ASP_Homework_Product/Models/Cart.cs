@@ -14,7 +14,14 @@ namespace ASP_Homework_Product.Models
         {
             get 
             {
-                return Items.Sum(x => x.Cost);
+                return Items?.Sum(x => x.Cost) ?? 0 ;
+            }
+        }
+        public decimal Amount
+        {
+            get
+            {
+                return Items?.Sum(x => x.Amount) ?? 0;
             }
         }
     }

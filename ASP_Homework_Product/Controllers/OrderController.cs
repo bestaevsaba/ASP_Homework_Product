@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ASP_Homework_Product.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP_Homework_Product.Controllers
@@ -17,10 +18,17 @@ namespace ASP_Homework_Product.Controllers
         {
             return View();
         }
-        public IActionResult Buy()
+
+        [HttpPost]
+        public IActionResult Buy(UserDeliveryInfo user)
         {
             var existingCart = cartsRepository.TryGetByUserId(Constants.UserId);
-            ordersRepository.Add(existingCart);
+            var order = new Order 
+            {
+                User = user,
+                Items = existingCart.Items,
+            };
+            ordersRepository.Add(order);
             cartsRepository.Clear(Constants.UserId);
             return View(existingCart);
         }
