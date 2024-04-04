@@ -9,10 +9,12 @@ namespace ASP_Homework_Product.Controllers
     {
         private readonly IProductsRepository productsRepository;
         private readonly IOrdersRepository ordersRepository;
-        public AdminController(IProductsRepository productsRepository, IOrdersRepository ordersRepository)
+        private readonly IRolesRepository rolesRepository;
+        public AdminController(IProductsRepository productsRepository, IOrdersRepository ordersRepository, IRolesRepository rolesRepository)
         {
             this.productsRepository = productsRepository;
             this.ordersRepository = ordersRepository;
+            this.rolesRepository = rolesRepository;
         }
 
         public IActionResult Orders()
@@ -31,17 +33,38 @@ namespace ASP_Homework_Product.Controllers
             ordersRepository.UpdateStatus(orderId, status);
             return RedirectToAction("Orders");
         }
-
-        
-
         public IActionResult Users()
         {
             return View();
         }
         public IActionResult Roles()
         {
+            var roles = rolesRepository.GetAll();
+            return View(roles);
+        }
+
+        public IActionResult RemoveRole(string roleName)
+        {
+            rolesRepository.Remove(roleName);
+            return RedirectToAction("Roles");
+        }
+        public IActionResult AddRole()
+        {
             return View();
         }
+        [HttpPost]
+        public IActionResult AddRole(Role role)
+        {
+            if (rolesRepository.TryGetByName(role.Name) != null) ModelState.AddModelError("", "Уже существует");
+            if (ModelState.IsValid)
+            {
+                rolesRepository.Add(role);
+                return RedirectToAction("Roles");
+            }
+            return View(role);
+        }
+
+
         public IActionResult Products()
         {
             var products = productsRepository.GetProducts();

@@ -17,6 +17,7 @@ namespace ASP_Homework_Product
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IRolesRepository, RolesInMemoryRepository>();
             services.AddSingleton<IOrdersRepository, OrdersInMemoryRepository>();
             services.AddSingleton<IProductsRepository, ProductsInMemoryRepository>();
             services.AddSingleton<ICartsRepository, CartsInMemoryRepository>();
