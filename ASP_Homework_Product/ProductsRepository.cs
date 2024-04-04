@@ -8,7 +8,7 @@ namespace ASP_Homework_Product
 {
     public class ProductsRepository
     {
-       private static List<Product> products = new List<Product>()
+       private List<Product> products = new List<Product>()
         {
             new Product("Palit GeForce RTX 4070 Dual OC", 65000, "ad" ,"/images/Palit GeForce RTX 4070 Dual OC.jpg"),
             new Product("ASUS GeForce RTX 4060 ProArt OC", 43000, "ad", "/image/ASUS GeForce RTX 4060 ProArt OC.png"),

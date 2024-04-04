@@ -13,9 +13,9 @@ namespace ASP_Homework_Product.Controllers
     {
         
         private readonly ProductsRepository productRepository;
-        public HomeController()
+        public HomeController(ProductsRepository productRepository)
         {
-            productRepository = new ProductsRepository();
+            this.productRepository = productRepository;
         }
 
         public IActionResult Index()

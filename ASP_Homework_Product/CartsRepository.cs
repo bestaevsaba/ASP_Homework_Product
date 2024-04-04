@@ -5,16 +5,16 @@ using System.Linq;
 
 namespace ASP_Homework_Product
 {
-    public static class CartsRepository
+    public class CartsRepository
     {
-        private static List<Cart> carts = new List<Cart>();
+        private List<Cart> carts = new List<Cart>();
 
-        internal static Cart TryGetByUserId(string userId)
+        internal Cart TryGetByUserId(string userId)
         {
             return carts.FirstOrDefault(x => x.UserId == userId);
         }
 
-        public static void Add(Product product, string userId)
+        public void Add(Product product, string userId)
         {
             var exisitingCart = TryGetByUserId(userId);
             if (exisitingCart == null)
