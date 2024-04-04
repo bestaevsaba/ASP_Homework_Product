@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ASP_Homework_Product.Models;
 
 namespace ASP_Homework_Product.Models
 {
